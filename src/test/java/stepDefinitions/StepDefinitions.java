@@ -26,20 +26,14 @@ public class StepDefinitions extends Utils {
     TestDataBuild testData = new TestDataBuild();
     @Given("Add place payload")
     public void add_place_payload() {
-        RestAssured.baseURI = "https://rahulshettyacademy.com";
-
         response = given()
                 .spec(requestSpecification())
-                .log()
-                .all()
                 .body(testData.addPlacePayload());
     }
     @When("user calls {string} with POST http request")
     public void user_calls_with_post_http_request(String string) {
         res = response.when().post("/maps/api/place/add/json")
                 .then()
-                .log()
-                .all()
                 .extract()
                 .response();
     }
