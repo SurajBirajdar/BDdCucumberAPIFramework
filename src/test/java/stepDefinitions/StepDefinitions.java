@@ -3,26 +3,54 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.junit.Assert;
+import org.junit.Test;
+import pojo.googlePlaceApiPojo.AddPlaceApi;
+import pojo.googlePlaceApiPojo.Location;
+import resources.TestDataBuild;
+import resources.Utils;
 
-public class StepDefinitions {
+import java.util.ArrayList;
+import java.util.List;
+
+import static io.restassured.RestAssured.given;
+
+public class StepDefinitions extends Utils {
+    RequestSpecification response;
+    Response res;
+    TestDataBuild testData = new TestDataBuild();
     @Given("Add place payload")
     public void add_place_payload() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        RestAssured.baseURI = "https://rahulshettyacademy.com";
+
+        response = given()
+                .spec(requestSpecification())
+                .log()
+                .all()
+                .body(testData.addPlacePayload());
     }
     @When("user calls {string} with POST http request")
     public void user_calls_with_post_http_request(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        res = response.when().post("/maps/api/place/add/json")
+                .then()
+                .log()
+                .all()
+                .extract()
+                .response();
     }
     @Then("API call gets success with {int} status code")
     public void api_call_gets_success_with_status_code(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals(res.getStatusCode(),200);
     }
     @Then("{string} in response body is {string}")
-    public void in_response_body_is(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void in_response_body_is(String keyValue, String expectedValue) {
+        String resp = res.asString();
+        JsonPath js = new JsonPath(resp);
+        Assert.assertEquals(js.get(keyValue),expectedValue);
     }
 }
