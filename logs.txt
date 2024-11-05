@@ -10,9 +10,9 @@ Headers:		Accept=*/*
 Cookies:		<none>
 Multiparts:		<none>
 Body:
-{"accuracy":50,"name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"29, side layout, cohen 09","website":"http://google.com","language":"French-IN","types":["shoe park","shop"],"location":{"lat":-38.383494,"lng":33.427362}}
+{"accuracy":50,"name":"AAhouse","phone_number":"(+91) 983 893 3937","address":"World cross center","website":"http://google.com","language":"English","types":["shoe park","shop"],"location":{"lat":-38.383494,"lng":33.427362}}
 HTTP/1.1 200 OK
-Date: Tue, 05 Nov 2024 07:53:54 GMT
+Date: Tue, 05 Nov 2024 11:08:47 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -25,8 +25,40 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "fefb76b223c6a892fe7300522bfa11cf",
+    "place_id": "b18e64a44d6c61f619287fff21ae1973",
     "scope": "APP",
-    "reference": "b0fb9d2e6a675c83883fdfb3c87bfcf1b0fb9d2e6a675c83883fdfb3c87bfcf1",
-    "id": "b0fb9d2e6a675c83883fdfb3c87bfcf1"
+    "reference": "3fbde47a450144c4c33e6b4b865107ec3fbde47a450144c4c33e6b4b865107ec",
+    "id": "3fbde47a450144c4c33e6b4b865107ec"
+}
+Request method:	POST
+Request URI:	https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+Proxy:			<none>
+Request params:	<none>
+Query params:	key=qaclick123
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=text/plain; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{"accuracy":50,"name":"BBhouse","phone_number":"(+91) 983 893 3937","address":"Sea cross center","website":"http://google.com","language":"Spanish","types":["shoe park","shop"],"location":{"lat":-38.383494,"lng":33.427362}}
+HTTP/1.1 200 OK
+Date: Tue, 05 Nov 2024 11:08:48 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
+Content-Length: 194
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+
+{
+    "status": "OK",
+    "place_id": "354b8318472cc294a84202130cb9ed08",
+    "scope": "APP",
+    "reference": "4c739812443ed5523c79f56f5e799b8d4c739812443ed5523c79f56f5e799b8d",
+    "id": "4c739812443ed5523c79f56f5e799b8d"
 }

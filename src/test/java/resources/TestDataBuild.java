@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestDataBuild {
-    public AddPlaceApi addPlacePayload() {
+    public AddPlaceApi addPlacePayload(String name, String language, String address) {
         AddPlaceApi addPlace = new AddPlaceApi();
         addPlace.setAccuracy(50);
-        addPlace.setName("Frontline house");
+        addPlace.setName(name);
         addPlace.setPhone_number("(+91) 983 893 3937");
-        addPlace.setAddress("29, side layout, cohen 09");
+        addPlace.setAddress(address);
         addPlace.setWebsite("http://google.com");
-        addPlace.setLanguage("French-IN");
+        addPlace.setLanguage(language);
 
         List<String> types = new ArrayList<>();
         types.add("shoe park");

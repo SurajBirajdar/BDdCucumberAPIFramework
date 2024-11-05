@@ -11,20 +11,23 @@ import java.io.*;
 import java.util.Properties;
 
 public class Utils {
-    RequestSpecification req;
+    public static RequestSpecification req;
     public RequestSpecification requestSpecification() {
-        PrintStream log;
-        try {
-            log = new PrintStream(new FileOutputStream("logs.txt"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        if(req == null) {
+            PrintStream log;
+            try {
+                log = new PrintStream(new FileOutputStream("logs.txt"));
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            String filePath = System.getProperty("user.dir") + "//src//test//java//resources//global.properties";
+            req = new RequestSpecBuilder().setBaseUri(getKeyValue("baseURL",filePath))
+                    .addQueryParam("key", "qaclick123")
+                    .addFilter(RequestLoggingFilter.logRequestTo(log))
+                    .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                    .build();
+            return req;
         }
-        String filePath = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\global.properties";
-        req = new RequestSpecBuilder().setBaseUri(getKeyValue("baseURL",filePath))
-                .addQueryParam("key", "qaclick123")
-                .addFilter(RequestLoggingFilter.logRequestTo(log))
-                .addFilter(ResponseLoggingFilter.logResponseTo(log))
-                .build();
         return req;
     }
 
@@ -39,7 +42,6 @@ public class Utils {
         }catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         String value = prop.getProperty(key);
         return value;
     }

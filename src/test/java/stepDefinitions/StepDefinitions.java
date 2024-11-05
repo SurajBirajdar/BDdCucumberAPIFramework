@@ -24,11 +24,11 @@ public class StepDefinitions extends Utils {
     RequestSpecification response;
     Response res;
     TestDataBuild testData = new TestDataBuild();
-    @Given("Add place payload")
-    public void add_place_payload() {
+    @Given("Add place payload with {string} {string} {string}")
+    public void add_place_payload_with(String name, String language, String address) {
         response = given()
                 .spec(requestSpecification())
-                .body(testData.addPlacePayload());
+                .body(testData.addPlacePayload(name, language, address));
     }
     @When("user calls {string} with POST http request")
     public void user_calls_with_post_http_request(String string) {
