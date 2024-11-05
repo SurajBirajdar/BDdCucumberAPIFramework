@@ -7,25 +7,42 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 
 import java.awt.print.Printable;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.util.Properties;
 
 public class Utils {
     RequestSpecification req;
     public RequestSpecification requestSpecification() {
-        RestAssured.baseURI = "https://rahulshettyacademy.com";
         PrintStream log;
         try {
             log = new PrintStream(new FileOutputStream("logs.txt"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        req = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+        String filePath = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\global.properties";
+        req = new RequestSpecBuilder().setBaseUri(getKeyValue("baseURL",filePath))
                 .addQueryParam("key", "qaclick123")
                 .addFilter(RequestLoggingFilter.logRequestTo(log))
                 .addFilter(ResponseLoggingFilter.logResponseTo(log))
                 .build();
         return req;
     }
+
+    public static String getKeyValue(String key, String filePath) {
+        Properties prop = new Properties();
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(filePath);
+            prop.load(fis);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        String value = prop.getProperty(key);
+        return value;
+    }
+
+
 }

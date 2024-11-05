@@ -12,7 +12,7 @@ Multiparts:		<none>
 Body:
 {"accuracy":50,"name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"29, side layout, cohen 09","website":"http://google.com","language":"French-IN","types":["shoe park","shop"],"location":{"lat":-38.383494,"lng":33.427362}}
 HTTP/1.1 200 OK
-Date: Mon, 04 Nov 2024 14:18:14 GMT
+Date: Tue, 05 Nov 2024 07:53:54 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -25,8 +25,8 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "0d88ee8dda920114172330f8bdd051ed",
+    "place_id": "fefb76b223c6a892fe7300522bfa11cf",
     "scope": "APP",
-    "reference": "889de2090e123c0fa9297e8f72bed277889de2090e123c0fa9297e8f72bed277",
-    "id": "889de2090e123c0fa9297e8f72bed277"
+    "reference": "b0fb9d2e6a675c83883fdfb3c87bfcf1b0fb9d2e6a675c83883fdfb3c87bfcf1",
+    "id": "b0fb9d2e6a675c83883fdfb3c87bfcf1"
 }
